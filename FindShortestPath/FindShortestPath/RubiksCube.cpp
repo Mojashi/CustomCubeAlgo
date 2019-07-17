@@ -37,11 +37,11 @@ void RubiksCube::Rotate(Color surf, int dis) {
 
 }
 
-Color RubiksCube::GetColor(Color surf, int idx) {
+Color RubiksCube::GetColor(Color surf, int idx) const {
 	return surface[surf][idx];
 }
 
-bool RubiksCube::isCleared() {
+bool RubiksCube::isCleared() const {
 	for (int i = 0; 6 > i; i++) {
 		for (int j = 0; 8 > j; j++) {
 			if (i != surface[i][j]) return false;
@@ -51,6 +51,6 @@ bool RubiksCube::isCleared() {
 	return true;
 }
 
-bool RubiksCube::isValid() {
+bool RubiksCube::isValid() const {
 	return true;
 }

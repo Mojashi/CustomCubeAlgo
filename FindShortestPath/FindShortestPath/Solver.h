@@ -1,33 +1,36 @@
 #pragma once
 
 #include "RubiksCube.h"
+#include <limits.h>
 #include <vector>
 #include <set>
 #include <map>
+#define INF INT_MAX / 2
 
 struct Way {
 	Color surf;
-	int dis;
+	int rot;
+	Way():rot(0){}
+	Way(Color surf, int rot) : surf(surf), rot(rot){}
 };
 
 class Solver
 {
+	typedef pair<__uint128_t, uint32_t> Hash;
 	RubiksCube initialCube;
 	
-	map<unsigned long long int, int> lower_bound;
+	map<Hash, int> lowerBound;
 
-	int upper_bound = INT_MAX;
-
+	int upperBound = 20; // God's number is 20
 
 	void Init(const RubiksCube& initialCube);
 
-	unsigned long long int Encode(const RubiksCube& cube);
+	Hash Encode(const RubiksCube& cube);
 
 	int Estimate(const RubiksCube& cur);
 
-	void DFS(RubiksCube cur, int depth, vector<Way>& history);
+	int DFS(RubiksCube cur, int depth, vector<Way>& history);
 
 	vector<Way> Solve();
 	
 };
-

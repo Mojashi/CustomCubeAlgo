@@ -1,12 +1,13 @@
 #pragma once
 #include <array>
 #include <assert.h>
-
+#include <algorithm>
 using namespace std;
 
 enum Color {
 	Yellow, Orange, Green, Red, Blue, White, None
 };
+Color ItoColor(unsigned int x) {assert(x < 7); return Color(x);}
 
 const Color adjsurface[6][4] = {
 	{Orange, Green,Red,Blue},
@@ -34,15 +35,16 @@ class RubiksCube
 {
 	array<array<Color, 8>, 6> surface;
 
+public:
 	RubiksCube();
 	RubiksCube(array<array<Color, 8>, 6> surface);
 
 	void Rotate(Color surf, int dis);
 
-	Color GetColor(Color surf, int idx);
+	Color GetColor(Color surf, int idx) const;
 
-	bool isCleared();
+	bool isCleared() const;
 
-	bool isValid();
+	bool isValid() const;
 
 };
