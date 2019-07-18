@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RubiksCube_H
+#define RubiksCube_H
+
 #include <array>
 #include <assert.h>
 #include <algorithm>
@@ -7,7 +9,7 @@ using namespace std;
 enum Color {
 	Yellow, Orange, Green, Red, Blue, White, None
 };
-Color ItoColor(unsigned int x) {assert(x < 7); return Color(x);}
+string ColorName[] = {"Yellow", "Orange", "Green", "Red", "Blue", "White", "None"};
 
 const Color adjsurface[6][4] = {
 	{Orange, Green,Red,Blue},
@@ -28,7 +30,7 @@ const int adjidx[6][12] = {
 };
 
 enum Surface {
-	Back, Left, Up, Right, Down, Left, Front
+	Back, Left, Up, Right, Down, Front
 };
 
 class RubiksCube
@@ -48,3 +50,4 @@ public:
 	bool isValid() const;
 
 };
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Solver_H
+#define Solver_H
 
 #include "RubiksCube.h"
 #include <limits.h>
@@ -21,7 +22,9 @@ class Solver
 	
 	map<Hash, int> lowerBound;
 
-	int upperBound = 20; // God's number is 20
+	int upperBound = 4; // God's number is 20
+
+public:
 
 	void Init(const RubiksCube& initialCube);
 
@@ -34,3 +37,5 @@ class Solver
 	vector<Way> Solve();
 	
 };
+
+#endif
